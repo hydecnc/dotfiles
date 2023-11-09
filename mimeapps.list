@@ -1,0 +1,7 @@
+[Default Applications]
+x-scheme-handler/discord-418076578333851669=discord-418076578333851669.desktop
+text/x-processing=processing-pde.desktop
+x-scheme-handler/pde=processing-pde.desktop
+
+[Added Associations]
+text/x-lua=nvim.desktop;
