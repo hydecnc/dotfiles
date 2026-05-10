@@ -4,15 +4,14 @@
 
 { config, pkgs, ... }:
 let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/master.tar.gz;
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 in
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      (import "${home-manager}/nixos")
-      ./home.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    (import "${home-manager}/nixos")
+    ./home.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -26,10 +25,9 @@ in
     options mt7921e disable_aspm=1
     options cfg80211 ieee80211_regdom="CA"
   '';
-  
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -51,12 +49,12 @@ in
 
   security.polkit.enable = true; # polkit
   services.gnome.gnome-keyring.enable = true; # secret service
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ 
-      xdg-desktop-portal-gnome 
-      xdg-desktop-portal-gtk 
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
     ];
   };
 
@@ -119,15 +117,17 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.arete = {
     isNormalUser = true;
     description = "Hyde Yoo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.zsh;
   };
-  
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -143,23 +143,25 @@ in
     '';
   };
 
-	# temporary fix of some programs crashing when using gtk3 file picker
-  environment.sessionVariables.XDG_DATA_DIRS = [ "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}" ];
+  # temporary fix of some programs crashing when using gtk3 file picker
+  environment.sessionVariables.XDG_DATA_DIRS = [
+    "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+  ];
 
   fonts.packages = with pkgs; [
     noto-fonts
     nerd-fonts.fira-code
   ];
-  
+
   # Install asusctl
   services.asusd = {
     enable = true;
   };
 
   services.openvpn.servers = {
-    labVPN = { 
-      config = '' config /home/${config.users.users.arete.name}/devel/vpn/labVPN.conf ''; 
-      authUserPass = '' /home/${config.users.users.arete.name}/devel/vpn/labVPN.creds '';
+    labVPN = {
+      config = "config /home/${config.users.users.arete.name}/devel/vpn/labVPN.conf ";
+      authUserPass = "/home/${config.users.users.arete.name}/devel/vpn/labVPN.creds ";
       updateResolvConf = true;
       autoStart = false;
     };
