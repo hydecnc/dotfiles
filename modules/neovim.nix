@@ -19,6 +19,7 @@
           lua
           nix
           typst
+          typescript
         ]
       ))
       nvim-lspconfig
@@ -36,9 +37,11 @@
       lua-language-server
       clang-tools
       nixfmt
+      vtsls
 
       # formatters
       stylua
+      eslint
     ];
   };
 }

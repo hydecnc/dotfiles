@@ -50,7 +50,10 @@
         history.size = 10000;
       };
 
-      programs.zoxide.enable = true;
+      programs.zoxide = {
+        enable = true;
+        options = [ "--cmd cd" ];
+      };
 
       programs.swaylock = {
         enable = true;
