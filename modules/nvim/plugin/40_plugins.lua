@@ -109,5 +109,6 @@ require('conform').setup {
       'ruff_organize_imports',
     },
     nix = { 'nixfmt' },
+    typescript = { 'biome' },
   },
 }

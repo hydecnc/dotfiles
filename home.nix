@@ -17,6 +17,7 @@
         pkgs.prismlauncher
         pkgs.firefox
         pkgs.zathura
+        pkgs.typst
       ];
 
       home.pointerCursor = {

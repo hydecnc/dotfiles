@@ -24,6 +24,7 @@
       ))
       nvim-lspconfig
       mini-nvim
+      typst-preview-nvim
 
       # import neovim config as a plugin
       (pkgs.vimUtils.buildVimPlugin {
@@ -38,10 +39,11 @@
       clang-tools
       nixfmt
       vtsls
+      tinymist
 
       # formatters
       stylua
-      eslint
+      biome
     ];
   };
 }
