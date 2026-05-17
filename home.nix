@@ -7,17 +7,18 @@
         ./modules/neovim.nix
       ];
       home.packages = [
-        pkgs.dconf
-        pkgs.gvfs
-        pkgs.tumbler
-        pkgs.fuzzel
-        pkgs.thunar
-        pkgs.xwayland-satellite # xwayland support
         pkgs.brightnessctl
-        pkgs.prismlauncher
+        pkgs.dconf
+        pkgs.direnv
         pkgs.firefox
-        pkgs.zathura
+        pkgs.fuzzel
+        pkgs.gvfs
+        pkgs.prismlauncher
+        pkgs.thunar
+        pkgs.tumbler
         pkgs.typst
+        pkgs.xwayland-satellite # xwayland support
+        pkgs.zathura
       ];
 
       home.pointerCursor = {
@@ -107,6 +108,7 @@
           main = {
             font = "Firacode Nerd Font:size=8";
           };
+          scrollback.multiplier = 10.0;
           cursor.style = "beam";
           colors-dark = {
             background = "000000";

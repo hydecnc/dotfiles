@@ -19,6 +19,7 @@ vim.cmd.colorscheme 'kanagawa'
 vim.cmd 'colorscheme kanagawa'
 
 require('mini.diff').setup()
+require('mini.files').setup()
 require('mini.extra').setup()
 require('mini.icons').setup()
 require('mini.pick').setup()

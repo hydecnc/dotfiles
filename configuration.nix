@@ -150,6 +150,7 @@ in
 
   fonts.packages = with pkgs; [
     noto-fonts
+    noto-fonts-cjk-sans
     nerd-fonts.fira-code
   ];
 
@@ -183,6 +184,10 @@ in
     options = "--delete-older-than 15d";
   };
   nix.settings.auto-optimise-store = true;
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
