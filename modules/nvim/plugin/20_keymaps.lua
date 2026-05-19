@@ -47,3 +47,20 @@ map('n', '<leader>fV', '<Cmd>Pick visit_paths<CR>')
 map('n', '<leader>bd', function()
   require('mini.bufremove').delete()
 end)
+
+map('n', '<leader>st', function()
+  vim.cmd.new()
+  vim.cmd.term()
+  vim.cmd.wincmd 'J'
+  vim.api.nvim_win_set_height(0, math.floor(vim.o.lines * 0.25))
+end)
+
+-- Autocommands
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})

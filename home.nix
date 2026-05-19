@@ -9,10 +9,10 @@
       home.packages = [
         pkgs.brightnessctl
         pkgs.dconf
-        pkgs.direnv
         pkgs.firefox
         pkgs.fuzzel
         pkgs.gvfs
+        pkgs.libnotify
         pkgs.prismlauncher
         pkgs.thunar
         pkgs.tumbler
@@ -52,6 +52,8 @@
         history.size = 10000;
         defaultKeymap = "emacs";
       };
+
+      programs.direnv.enable = true;
 
       programs.zoxide = {
         enable = true;

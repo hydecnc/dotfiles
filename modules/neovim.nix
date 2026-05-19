@@ -10,6 +10,7 @@
       blink-cmp
       friendly-snippets
       conform-nvim
+      nvim-treesitter-textobjects
       (nvim-treesitter.withPlugins (
         p: with p; [
           c
