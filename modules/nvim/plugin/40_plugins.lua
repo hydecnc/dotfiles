@@ -110,6 +110,9 @@ require('conform').setup {
       'ruff_organize_imports',
     },
     nix = { 'nixfmt' },
+    javascript = { 'biome' },
     typescript = { 'biome' },
+    javascriptreact = { 'biome' },
+    typescriptreact = { 'biome' },
   },
 }

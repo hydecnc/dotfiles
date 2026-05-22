@@ -1,11 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 {
   programs.neovim = {
     enable = true;
+    package = unstable.neovim-unwrapped;
     defaultEditor = true;
     withRuby = false;
     withPython3 = false;
-    plugins = with pkgs.vimPlugins; [
+    plugins = with unstable.vimPlugins; [
       kanagawa-nvim
       blink-cmp
       friendly-snippets
@@ -28,7 +29,7 @@
       typst-preview-nvim
 
       # import neovim config as a plugin
-      (pkgs.vimUtils.buildVimPlugin {
+      (unstable.vimUtils.buildVimPlugin {
         name = "nvim-config";
         src = ./nvim;
         doCheck = false;

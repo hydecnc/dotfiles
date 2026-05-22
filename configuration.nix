@@ -4,7 +4,8 @@
 
 { config, pkgs, ... }:
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
+  unstable = import <nixos-unstable> { config = pkgs.config; };
 in
 {
   imports = [
@@ -13,12 +14,16 @@ in
     ./home.nix
   ];
 
+  home-manager.extraSpecialArgs = { inherit unstable; };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Use LTS kernel.
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # Disable power saving
   boot.extraModprobeConfig = ''
@@ -27,7 +32,7 @@ in
   '';
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

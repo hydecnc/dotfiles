@@ -1,7 +1,12 @@
 { ... }:
 {
   home-manager.users.arete =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      unstable,
+      ...
+    }:
     {
       imports = [
         ./modules/neovim.nix
@@ -14,8 +19,8 @@
         pkgs.gvfs
         pkgs.libnotify
         pkgs.prismlauncher
-        pkgs.thunar
-        pkgs.tumbler
+        pkgs.xfce.thunar
+        pkgs.xfce.tumbler
         pkgs.typst
         pkgs.xwayland-satellite # xwayland support
         pkgs.zathura
@@ -95,16 +100,29 @@
               command = "${pkgs.systemd}/bin/systemctl suspend";
             }
           ];
-          events = {
-            before-sleep = (display "off") + "; " + lock;
-            after-resume = display "on";
-            lock = (display "off") + "; " + lock;
-            unlock = display "on";
-          };
+          events = [
+            {
+              event = "before-sleep";
+              command = (display "off") + "; " + lock;
+            }
+            {
+              event = "after-resume";
+              command = display "on";
+            }
+            {
+              event = "lock";
+              command = (display "off") + "; " + lock;
+            }
+            {
+              event = "unlock";
+              command = display "on";
+            }
+          ];
         };
 
       programs.foot = {
         enable = true;
+        package = unstable.foot;
         server.enable = true;
         settings = {
           main = {
