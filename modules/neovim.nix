@@ -41,11 +41,13 @@
       clang-tools
       nixfmt
       vtsls
+      basedpyright
       tinymist
 
-      # formatters
+      # linter/formatters
       stylua
       biome
+      ruff
     ];
   };
 }
