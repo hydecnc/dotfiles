@@ -108,6 +108,12 @@ in
     };
   };
 
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Never Debounce]
+    MatchUdevType=mouse
+    ModelBouncingKeys=1
+  '';
+
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [
     "amdgpu"
