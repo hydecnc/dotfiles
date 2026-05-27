@@ -1,27 +1,19 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
-  unstable = import <nixos-unstable> { config = pkgs.config; };
-in
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
-    (import "${home-manager}/nixos")
-    ./home.nix
   ];
-
-  home-manager.extraSpecialArgs = { inherit unstable; };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  boot.kernelPackages = unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Disable power saving
   boot.extraModprobeConfig = ''
@@ -152,10 +144,7 @@ in
     '';
   };
 
-  # temporary fix of some programs crashing when using gtk3 file picker
-  environment.sessionVariables.XDG_DATA_DIRS = [
-    "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
-  ];
+  programs.dconf.enable = true;
 
   fonts.packages = with pkgs; [
     noto-fonts
