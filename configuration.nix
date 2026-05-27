@@ -21,7 +21,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = unstable.linuxPackages_latest;
 
   # Disable power saving
   boot.extraModprobeConfig = ''
