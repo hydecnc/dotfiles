@@ -16,8 +16,8 @@
     pkgs.gvfs
     pkgs.libnotify
     pkgs.prismlauncher
-    pkgs.xfce.thunar
-    pkgs.xfce.tumbler
+    pkgs.thunar
+    pkgs.tumbler
     pkgs.typst
     pkgs.xwayland-satellite # xwayland support
     pkgs.zathura
@@ -97,24 +97,12 @@
           command = "${pkgs.systemd}/bin/systemctl suspend";
         }
       ];
-      events = [
-        {
-          event = "before-sleep";
-          command = (display "off") + "; " + lock;
-        }
-        {
-          event = "after-resume";
-          command = display "on";
-        }
-        {
-          event = "lock";
-          command = (display "off") + "; " + lock;
-        }
-        {
-          event = "unlock";
-          command = display "on";
-        }
-      ];
+      events = {
+        before-sleep = (display "off") + "; " + lock;
+        after-resume = display "on";
+        lock = (display "off") + "; " + lock;
+        unlock = display "on";
+      };
     };
 
   programs.foot = {
@@ -203,6 +191,7 @@
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;
     };
+    gtk4.theme = null;
   };
 
   qt = {
