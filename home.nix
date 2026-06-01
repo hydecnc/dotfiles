@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgsUnstable,
   ...
 }:
 {
@@ -107,7 +106,6 @@
 
   programs.foot = {
     enable = true;
-    package = pkgsUnstable.foot;
     server.enable = true;
     settings = {
       main = {
