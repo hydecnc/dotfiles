@@ -3,8 +3,9 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    withRuby = false;
+    vimAlias = true;
     withPython3 = false;
+    withRuby = false;
     plugins = with pkgs.vimPlugins; [
       kanagawa-nvim
       blink-cmp
