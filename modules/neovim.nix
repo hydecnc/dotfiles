@@ -14,14 +14,15 @@
       nvim-treesitter-textobjects
       (nvim-treesitter.withPlugins (
         p: with p; [
+          bash
           c
           cpp
-          python
-          bash
+          go
           lua
           nix
-          typst
+          python
           typescript
+          typst
         ]
       ))
       nvim-lspconfig
@@ -37,17 +38,18 @@
     ];
     extraPackages = with pkgs; [
       # LSP
-      lua-language-server
-      clang-tools
-      nixfmt
-      vtsls
       basedpyright
+      clang-tools
+      gopls
+      lua-language-server
+      nixfmt
       tinymist
+      vtsls
 
       # linter/formatters
-      stylua
       biome
       ruff
+      stylua
     ];
   };
 }
