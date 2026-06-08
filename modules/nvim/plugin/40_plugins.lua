@@ -18,9 +18,10 @@ vim.cmd.colorscheme 'kanagawa'
 -- setup must be called before loading
 vim.cmd 'colorscheme kanagawa'
 
+require('mini.align').setup()
 require('mini.diff').setup()
-require('mini.files').setup()
 require('mini.extra').setup()
+require('mini.files').setup()
 require('mini.icons').setup()
 require('mini.pick').setup()
 require('mini.surround').setup()

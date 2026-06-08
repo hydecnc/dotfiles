@@ -42,7 +42,7 @@
       gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
     };
     signing = {
-      key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+      key = "${config.home.homeDirectory}/.ssh/git_signing.pub";
       signByDefault = true;
       format = "ssh";
     };

@@ -125,6 +125,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "libvirtd"
     ];
     shell = pkgs.zsh;
   };
@@ -132,7 +133,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    dnsmasq
     pure-prompt
+    qemu
   ];
 
   programs.zsh = {
@@ -157,6 +160,10 @@
     enable = true;
   };
 
+  # Install QEMU and libvirtd
+  virtualisation.libvirtd.enable = true;
+  systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
+
   services.openvpn.servers = {
     labVPN = {
       config = "config /home/${config.users.users.arete.name}/devel/vpn/labVPN.conf ";
@@ -165,15 +172,10 @@
       autoStart = false;
     };
   };
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   nix.gc = {
     automatic = true;
