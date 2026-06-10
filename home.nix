@@ -10,6 +10,7 @@
 
   home.packages = [
     pkgs.brightnessctl
+    pkgs.chromium
     pkgs.firefox
     pkgs.fuzzel
     pkgs.gvfs
