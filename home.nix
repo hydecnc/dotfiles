@@ -69,6 +69,8 @@
     };
   };
 
+  services.mpris-proxy.enable = true;
+
   services.swayidle =
     let
       lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
