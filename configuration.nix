@@ -159,6 +159,7 @@
   services.asusd = {
     enable = true;
   };
+  systemd.services.asus-shutdown.restartIfChanged = false;
 
   # Install QEMU and libvirtd
   virtualisation.libvirtd = {

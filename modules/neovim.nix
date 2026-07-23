@@ -17,6 +17,7 @@
           bash
           c
           cpp
+          cuda
           go
           lua
           nix
