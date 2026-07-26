@@ -161,14 +161,24 @@
   };
   systemd.services.asus-shutdown.restartIfChanged = false;
 
-  # Install QEMU and libvirtd
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+  # Install libvirtd, QEMU, and Podman
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+    };
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
+
   programs.virt-manager.enable = true;
   systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
 
+  # Configure OpenVPN
   services.openvpn.servers = {
     labVPN = {
       config = "config /home/${config.users.users.arete.name}/devel/vpn/labVPN.conf ";
