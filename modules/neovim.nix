@@ -45,7 +45,7 @@
       lua-language-server
       nixfmt
       tinymist
-      vtsls
+      typescript-go
 
       # linter/formatters
       biome
