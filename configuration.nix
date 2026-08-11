@@ -111,9 +111,11 @@
     "amdgpu"
     "nvidia"
   ];
-  hardware.nvidia.open = true;
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.powerManagement.enable = true;
+  hardware.nvidia = {
+    open = true;
+    modesetting.enable = true;
+    powerManagement.enable = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

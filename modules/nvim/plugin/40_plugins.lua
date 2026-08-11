@@ -92,12 +92,9 @@ require('conform').setup {
     lsp_format = 'fallback',
   },
   format_on_save = {
-    -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_format = 'fallback',
   },
-  -- Map of filetype to formatters
-  -- Make sure that necessary CLI tool is available
   formatters_by_ft = {
     lua = { 'stylua' },
     c = { 'clang-format' },
@@ -115,5 +112,6 @@ require('conform').setup {
     typescript = { 'biome-check' },
     javascriptreact = { 'biome-check' },
     typescriptreact = { 'biome-check' },
+    markdown = { 'dprint' },
   },
 }

@@ -43,12 +43,13 @@
       clang-tools
       gopls
       lua-language-server
-      nixfmt
       tinymist
       typescript-go
 
       # linter/formatters
       biome
+      dprint
+      nixfmt
       ruff
       stylua
     ];
