@@ -18,7 +18,6 @@
   # Disable power saving
   boot.extraModprobeConfig = ''
     options mt7921e disable_aspm=1
-    options cfg80211 ieee80211_regdom="CA"
   '';
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -158,10 +157,18 @@
   ];
 
   # Install asusctl
-  services.asusd = {
-    enable = true;
-  };
+  services.asusd.enable = true;
   systemd.services.asus-shutdown.restartIfChanged = false;
+  # services.cardwired = {
+  #   enable = true;
+  #   settings = {
+  #     auto_apply_gpu_state = true;
+  #     experimental_nvidia_block = true;
+  #     battery_auto_switch = true;
+  #     battery_auto_switch_mode = "hybrid";
+  #     external_display_auto_switch = false;
+  #   };
+  # };
 
   # Install libvirtd, QEMU, and Podman
   virtualisation = {

@@ -216,10 +216,12 @@
     };
   };
 
-  xdg.configFile."dprint/dprint.json".text = builtins.toJSON {
+  xdg.configFile."dprint/dprint.jsonc".text = builtins.toJSON {
+    json = { };
     markdown = { };
     excludes = [ ];
     plugins = [
+      "https://plugins.dprint.dev/json-0.23.0.wasm"
       "https://plugins.dprint.dev/markdown-0.22.1.wasm"
     ];
   };

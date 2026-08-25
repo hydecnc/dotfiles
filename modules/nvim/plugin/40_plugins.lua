@@ -107,11 +107,12 @@ require('conform').setup {
       -- To organize the imports.
       'ruff_organize_imports',
     },
-    nix = { 'nixfmt' },
     javascript = { 'biome-check' },
-    typescript = { 'biome-check' },
     javascriptreact = { 'biome-check' },
-    typescriptreact = { 'biome-check' },
+    json = { 'dprint' },
     markdown = { 'dprint' },
+    nix = { 'nixfmt' },
+    typescript = { 'biome-check' },
+    typescriptreact = { 'biome-check' },
   },
 }
