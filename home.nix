@@ -13,12 +13,15 @@
     pkgs.chromium
     pkgs.firefox
     pkgs.fuzzel
-    pkgs.gvfs
+    pkgs.imv
     pkgs.libnotify
+    pkgs.mpv
     pkgs.prismlauncher
+    pkgs.taskwarrior3
     pkgs.thunar
     pkgs.tumbler
     pkgs.typst
+    pkgs.unzip
     pkgs.xwayland-satellite # xwayland support
     pkgs.zathura
   ];
@@ -207,6 +210,15 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      "image/png" = "imv.desktop";
+      "image/jpeg" = "imv.desktop";
+      "image/gif" = "imv.desktop";
+      "image/webp" = "imv.desktop";
+      "image/bmp" = "imv.desktop";
+      "image/tiff" = "imv.desktop";
+      "image/svg+xml" = "imv.desktop";
+      "image/avif" = "imv.desktop";
+      "image/heic" = "imv.desktop";
       "application/pdf" = "org.pwmt.zathura.desktop";
       "text/html" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
