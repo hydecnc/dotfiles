@@ -27,6 +27,9 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # Enable Zram swap
+  zramSwap.enable = true;
+
   # Enable networking
   networking.networkmanager.enable = true;
   # networking.networkmanager.wifi.backend = "iwd";
@@ -181,6 +184,10 @@
 
   # Install libvirtd, QEMU, and Podman
   virtualisation = {
+    # TODO: remove virtualbox when unnecessary
+    virtualbox = {
+      host.enable = true;
+    };
     libvirtd = {
       enable = true;
       qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
@@ -195,6 +202,8 @@
 
   programs.virt-manager.enable = true;
   systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
+  # TODO: remove virtualbox when unnecessary
+  users.extraGroups.vboxusers.members = [ "arete" ];
 
   # Configure OpenVPN
   services.openvpn.servers = {
@@ -206,8 +215,6 @@
     };
   };
   networking.firewall.trustedInterfaces = [ "virbr0" ];
-
-  programs.steam.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

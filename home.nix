@@ -13,6 +13,8 @@
     pkgs.chromium
     pkgs.firefox
     pkgs.fuzzel
+    pkgs.gcc
+    pkgs.gnumake
     pkgs.imv
     pkgs.libnotify
     pkgs.mpv
@@ -22,8 +24,8 @@
     pkgs.tumbler
     pkgs.typst
     pkgs.unzip
+    pkgs.waywall
     pkgs.xwayland-satellite # xwayland support
-    pkgs.zathura
   ];
 
   home.pointerCursor = {
@@ -169,6 +171,13 @@
         counter = "#cf87e8ff";
         border = "#8cc85fff";
       };
+    };
+  };
+
+  programs.zathura = {
+    enable = true;
+    options = {
+      selection-clipboard = "clipboard";
     };
   };
 

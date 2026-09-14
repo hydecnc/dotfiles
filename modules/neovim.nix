@@ -38,6 +38,9 @@
       })
     ];
     extraPackages = with pkgs; [
+      # external tools
+      ripgrep
+
       # LSP
       basedpyright
       clang-tools
