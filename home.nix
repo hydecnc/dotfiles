@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ./modules/niri.nix
     ./modules/neovim.nix
   ];
 
@@ -18,6 +19,7 @@
     pkgs.imv
     pkgs.libnotify
     pkgs.mpv
+    pkgs.playerctl
     pkgs.prismlauncher
     pkgs.taskwarrior3
     pkgs.thunar
@@ -29,6 +31,7 @@
   ];
 
   home.pointerCursor = {
+    enable = true;
     package = pkgs.adwaita-icon-theme;
     name = "Adwaita";
     size = 15;
@@ -200,11 +203,7 @@
 
   gtk = {
     enable = true;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
-    };
-    gtk4.theme = null;
+    colorScheme = "dark";
   };
 
   qt = {

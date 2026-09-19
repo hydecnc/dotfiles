@@ -5,6 +5,6 @@ vim.lsp.enable 'gopls'
 vim.lsp.enable 'lua_ls'
 vim.lsp.enable 'ruff'
 vim.lsp.enable 'tinymist'
-vim.lsp.enable 'tsgo'
+vim.lsp.enable 'tsc'
 
 vim.lsp.inlay_hint.enable(true)

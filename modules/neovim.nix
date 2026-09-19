@@ -47,7 +47,7 @@
       gopls
       lua-language-server
       tinymist
-      typescript-go
+      typescript
 
       # linter/formatters
       biome
