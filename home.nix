@@ -240,10 +240,10 @@
     json = { };
     markdown = { };
     excludes = [ ];
-    plugins = [
-      "https://plugins.dprint.dev/json-0.23.0.wasm"
-      "https://plugins.dprint.dev/markdown-0.22.1.wasm"
-    ];
+    plugins = pkgs.dprint-plugins.getPluginList (p: [
+      p.dprint-plugin-json
+      p.dprint-plugin-markdown
+    ]);
   };
 
   # This value determines the Home Manager release that your configuration is
