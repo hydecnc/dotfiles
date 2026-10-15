@@ -44,6 +44,7 @@
       # LSP
       basedpyright
       clang-tools
+      go
       gopls
       lua-language-server
       tinymist
@@ -55,6 +56,7 @@
       nixfmt
       ruff
       stylua
+      (texlive.withPackages (ps: [ ps.latexindent ]))
     ];
   };
 }
