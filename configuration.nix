@@ -6,6 +6,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules/security.nix
   ];
 
   # Bootloader
@@ -199,9 +200,14 @@
 
   # Configure OpenVPN
   services.openvpn.servers = {
-    labVPN = {
-      config = "config /home/${config.users.users.arete.name}/devel/vpn/labVPN.conf ";
-      authUserPass = "/home/${config.users.users.arete.name}/devel/vpn/labVPN.creds ";
+    cslab = {
+      config = "config /home/${config.users.users.arete.name}/devel/vpn/cslab.conf ";
+      authUserPass = "/home/${config.users.users.arete.name}/devel/vpn/cslab.creds ";
+      updateResolvConf = true;
+      autoStart = false;
+    };
+    tosslab = {
+      config = "config /home/${config.users.users.arete.name}/devel/vpn/tosslab.ovpn";
       updateResolvConf = true;
       autoStart = false;
     };
