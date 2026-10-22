@@ -129,9 +129,10 @@
     isNormalUser = true;
     description = "Hyde Yoo";
     extraGroups = [
+      "libvirtd"
       "networkmanager"
       "wheel"
-      "libvirtd"
+      "wireshark"
     ];
     shell = pkgs.zsh;
   };
