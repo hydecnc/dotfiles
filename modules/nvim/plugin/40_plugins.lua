@@ -114,6 +114,6 @@ require('conform').setup {
     nix = { 'nixfmt' },
     typescript = { 'biome-check' },
     typescriptreact = { 'biome-check' },
-    tex = { 'latexindent' },
+    tex = { 'tex-fmt' },
   },
 }

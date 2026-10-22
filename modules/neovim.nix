@@ -56,7 +56,7 @@
       nixfmt
       ruff
       stylua
-      (texlive.withPackages (ps: [ ps.latexindent ]))
+      tex-fmt
     ];
   };
 }
